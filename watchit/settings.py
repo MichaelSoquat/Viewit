@@ -11,6 +11,63 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import psycopg2
+import psycopg2.extras
+con= None
+cur = None
+try:
+    con = psycopg2.connect(
+    host="localhost",
+    database= "mydb",
+    user="postgres",
+    password="mypass",
+    port="5432"
+)
+
+    cur= con.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+    cur.execute('DROP TABLE IF EXISTS employee')
+
+    create_script= ''' CREATE TABLE IF NOT EXISTS employee(
+                            id      int PRIMARY KEY,
+                            name    varchar(40) NOT NULL,
+                            salary  int,
+                            dept_id varchar(30)) '''
+
+    cur.execute(create_script)
+
+    insert_script='INSERT INTO employee(id,name,salary,dept_id) VALUES(%s,%s,%s,%s)'
+    insert_values=[(1,'James', 12000, 'D1'),(2,'John', 15000, 'D2'),(3,'Mike', 20000, 'D3'),]
+    for record in insert_values:
+        cur.execute(insert_script, record)
+
+    update_script ='UPDATE employee SET salary = salary + (salary * 0.5)'
+    cur.execute(update_script)
+
+    delete_script='DELETE FROM employee WHERE name = %s'
+    delete_record=('James',)
+    cur.execute(delete_script, delete_record)
+
+    cur.execute('SELECT * FROM EMPLOYEE')
+    for record in cur.fetchall():
+
+        print(record['name'], record['salary'])
+
+    
+    con.commit()
+
+    
+
+except Exception as error:
+    print(error)
+finally:
+    if cur is not None:
+
+        cur.close()
+    if con is not None: 
+
+        con.close()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,8 +133,12 @@ WSGI_APPLICATION = 'watchit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydb',
+        'USER': 'postgres',
+        'PASSWORD': 'mypass',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
