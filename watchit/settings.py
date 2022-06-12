@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import psycopg2
 import psycopg2.extras
+
 con= None
 cur = None
 try:
@@ -83,8 +84,13 @@ SECRET_KEY = 'django-insecure-x=+3p*3!4#uqc39q%vv!d*u23y-v21z7b%-@^0dmzq6hn4x1dy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type('application/javascript','.js', True)
+
 ALLOWED_HOSTS = []
 
+CACHE_TTL= 60*15
 
 # Application definition
 
@@ -95,10 +101,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'videoplatform.apps.VideoplatformConfig'
+    'videoplatform.apps.VideoplatformConfig',
+    "django_rq",
+    'debug_toolbar',
+    
 ]
 
+
+
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -107,6 +119,23 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        'PASSWORD': 'foobared',
+        'DEFAULT_TIMEOUT': 360,
+    },
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+    }
+}
 
 ROOT_URLCONF = 'watchit.urls'
 
@@ -187,3 +216,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
