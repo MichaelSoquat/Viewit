@@ -104,6 +104,7 @@ INSTALLED_APPS = [
     'videoplatform.apps.VideoplatformConfig',
     "django_rq",
     'debug_toolbar',
+    'import_export',
     
 ]
 
@@ -201,11 +202,11 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
+IMPORT_EXPORT_USE_TRANSACTIONS=True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/staticfiles')
 STATIC_URL = 'static/'
 
 # Default primary key field type
