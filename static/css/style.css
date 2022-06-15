@@ -7,6 +7,7 @@ body {
 body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
@@ -30,6 +31,7 @@ body {
     padding: 10px;
     width: 100%;
     position: relative;
+    border-bottom: 8px solid #222 !important;
 }
 
 .box {
@@ -68,6 +70,11 @@ body {
     color: white;
     cursor: pointer;
     margin-right: 32px;
+}
+
+.button:hover {
+    background: #f40612;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 45%);
 }
 
 .background {
@@ -114,4 +121,10 @@ body {
     height: 32px;
     display: flex;
     justify-content: center;
+}
+
+.enjoy-section {
+    background-color: #000;
+    height: 200px;
+    width: 100%;
 }
