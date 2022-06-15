@@ -11,4 +11,4 @@ CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 @cache_page(CACHE_TTL)
 def allVideos(request):
     videos= Video.objects.all()
-    return render(request, 'platform.html', {'videos': videos})
+    return render(request, 'index.html', {'videos': videos})

@@ -106,6 +106,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'import_export',
     'user',
+    'startscreen',
     
 ]
 
@@ -144,12 +145,13 @@ ROOT_URLCONF = 'watchit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -216,6 +218,7 @@ IMPORT_EXPORT_USE_TRANSACTIONS=True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/staticfiles')
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static",]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
