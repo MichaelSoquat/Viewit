@@ -13,27 +13,49 @@
 </head>
 
 <body>
-    <div class="nav-container">
+
+    <!-- BACKGROUND -->
+    <div class="nav-container border-bottom">
         <div class="box saturate">
         </div>
     </div>
 
-    <div class="nav-absolute">
-        <div>
-            <a class="watchit-logo" href='#'>
-            WATCHIT
-        </a>
-        </div>
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav class="nav-absolute">
+            <div>
+                <a class="watchit-logo" href='#'>
+                WATCHIT
+            </a>
+            </div>
 
-        <div>
-            <a class="button" href="#">
-                Sign In 
-        </a>
-        </div>
-    </div>
-
+            <div>
+                <a class="button" href="#">
+                    Sign In 
+            </a>
+            </div>
+        </nav>
+    </header>
 
     {% block content %} {% endblock content %}
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div>
+            <p>Questions? Call 0800-000-1234</p>
+            <p>@Copyright, Watchit 2022</p>
+        </div>
+        <div class="footer-link-container">
+            <a href="#">
+                Imprint
+            </a>
+            <a href="#">
+                Privacy
+            </a>
+        </div>
+
+
+    </footer>
 
 </body>
 
