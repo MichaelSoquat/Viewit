@@ -107,11 +107,26 @@ INSTALLED_APPS = [
     'import_export',
     'user',
     'startscreen',
+    'djoser',
+    'rest_framework',
+    'rest_framework.authtoken'
     
 ]
 
 AUTH_USER_MODEL='user.CustomUser'
 
+DJOSER = {
+    "USER_ID_FIELD": "username",
+    "LOGIN_FIELD": "email",
+    "SEND_ACTIVATION_EMAIL": True,
+    "ACTIVATION_URL": "activate/{uid}/{token}",
+    'SERIALIZERS': {
+        'token_create': 'apps.accounts.serializers.CustomTokenCreateSerializer',
+    },
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SITE_NAME = "WATCHIT"
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',

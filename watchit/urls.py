@@ -17,14 +17,16 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from videoplatform.views import allVideos
+from user.views import register
 from startscreen.views import startscreen
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', allVideos),
+    # path('', allVideos),
     path('django-rq/', include('django_rq.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
-    path('start/', startscreen)
+    path('', startscreen),
+    path('register/', register),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
