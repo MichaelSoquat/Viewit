@@ -184,3 +184,12 @@ body {
     flex-direction: column;
     justify-content: center;
 }
+
+.mdl-card {
+    position: absolute !important;
+}
+
+.mdl-card__actions,
+.mdl-card--border {
+    border-top: 0 !important;
+}

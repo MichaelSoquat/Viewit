@@ -1,16 +1,23 @@
-from re import template
-from django.http import HttpResponse
-from django.shortcuts import render
-from redis import ResponseError
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from yaml import serialize
 
-# Create your views here.
+from django.shortcuts import redirect, render  
+from .forms import CustomUserCreationForm  
+# Create your views here.  
+  
+def register(request):  
+    if request.method == 'POST':  
+        form=CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+        
+    else:  
+        form = CustomUserCreationForm()  
+        context = {  
+        'form':form  
+        }  
+        return render(request, 'register.html', context)  
+    return render(request, 'register.html')  
+    
+        
 
-
-def register(request):
-
-        email= request.GET['email']
-        print(email)
-        return render(request,'register.html', {'email': email})
+    
+        
