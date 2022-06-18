@@ -7,24 +7,27 @@ from django.forms.forms import Form
 from .models import CustomUser  
   
 class CustomUserCreationForm(UserCreationForm):  
-    username = forms.CharField(label='username', min_length=5, max_length=150)  
-    email = forms.EmailField(label='email')  
-    password1 = forms.CharField(label='password', widget=forms.PasswordInput)  
-    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)  
+    username = forms.CharField(label='Username', min_length=5, max_length=150)
+    first_name = forms.CharField(label='First name', max_length=150) 
+    last_name = forms.CharField(label='Last name', max_length=150) 
+    email = forms.EmailField(label='Email')  
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)  
+    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
+
     
     class Meta:
         model=CustomUser
-        fields = 'username','email', 'password1','password2'
+        fields = 'username','first_name', 'last_name','email', 'password1','password2'
         
     def username_clean(self):  
-        username = self.cleaned_data['username'].lower()  
+        username = self.cleaned_data['Username'].lower()  
         new = CustomUser.objects.filter(username = username)  
         if new.count():  
             raise ValidationError("User Already Exist")  
         return username  
   
     def email_clean(self):  
-        email = self.cleaned_data['email'].lower()  
+        email = self.cleaned_data['Email'].lower()  
         new = CustomUser.objects.filter(email=email)  
         if new.count():  
             raise ValidationError(" Email Already Exist")  
@@ -42,7 +45,9 @@ class CustomUserCreationForm(UserCreationForm):
         user = CustomUser.objects.create_user(  
             self.cleaned_data['username'],  
             self.cleaned_data['email'],  
-            self.cleaned_data['password1']  
+            self.cleaned_data['password1'],
+            first_name = self.cleaned_data['first_name'],  
+            last_name = self.cleaned_data['last_name'],  
         )  
         return user  
     
