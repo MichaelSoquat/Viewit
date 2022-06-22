@@ -20,14 +20,18 @@ from videoplatform.views import allVideos
 from user.views import register
 from startscreen.views import startscreen
 from django.conf.urls.static import static
+from user.views import login_view, logout_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', allVideos),
+    path('watchit/', allVideos),
     path('django-rq/', include('django_rq.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
     path('', startscreen),
     path('register/', register),
+    path('login/', login_view),
+    path('logout/', logout_view),
     
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
