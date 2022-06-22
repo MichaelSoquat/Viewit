@@ -110,7 +110,8 @@ INSTALLED_APPS = [
     'startscreen',
     'djoser',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'crispy_forms',
     
 ]
 
