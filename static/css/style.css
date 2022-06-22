@@ -94,6 +94,7 @@ body {
     flex-direction: column;
     color: grey;
     background-color: white;
+    padding: 8px;
 }
 
 .register-section {
@@ -229,12 +230,14 @@ form p {
 .registration-form p {
     display: flex;
     justify-content: space-between;
-    margin: 16px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    padding: 0;
 }
 
 .registration-form p input {
     border: 1px solid black;
-    min-width: 60%;
+    min-width: 50%;
 }
 
 .registration-form .button {
