@@ -9,7 +9,7 @@
     {%endif%}
     <div class="mdl-card__supporting-text">
 
-        <form method="post">
+        <form class="login-form" method="post">
             {% csrf_token %}
             <input type="hidden" name="redirect" value="{{ redirect }}">
             <div style="display:flex; flex-direction:column">
@@ -22,13 +22,13 @@
                     <label class="mdl-textfield__label" for="sample3">Password</label>
                 </div>
             </div>
-            <input type="submit" name="submit" value="Login" />
+            <a class="button" type="submit" name="submit" value="Login">Login</a>
 
 
         </form>
     </div>
-    <div style="margin-top: 20px; color: black;">
-        You are not registered already?<br> Please click <a href="/register/">here</a> to register.
+    <div style="color: black; padding-bottom: 16px;">
+        You are not registered already?<br> Please click <a class="red-link" href="/register/">here</a> to register.
     </div>
 
 </div>

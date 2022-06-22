@@ -90,7 +90,8 @@ if DEBUG:
 
 ALLOWED_HOSTS = []
 
-CACHE_TTL= 60*15
+CACHE_TTL= 1
+# 60*15
 
 # Application definition
 
@@ -240,8 +241,8 @@ STATICFILES_DIRS = [BASE_DIR / "static",]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media/videos/')
+MEDIA_URL = 'watchit/videos/'
 
 INTERNAL_IPS = [
     "127.0.0.1",

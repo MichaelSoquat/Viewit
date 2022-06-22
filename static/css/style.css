@@ -13,14 +13,14 @@ body {
 
 .watchit-logo {
     text-decoration: none;
-    color: red;
+    color: #e50914;
     font-size: 48px;
     font-weight: 900;
     margin-left: 32px;
 }
 
 .nav-container {
-    background-image: url("../img/film.png");
+    background-image: url("../img/background.jpg");
     background-size: cover;
     height: 100vh;
     padding: 10px;
@@ -56,6 +56,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-top: 32px;
 }
 
 .button {
@@ -63,7 +64,7 @@ body {
     line-height: normal;
     padding: 7px 17px;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 32px;
     text-decoration: none;
     border-radius: 3px;
     color: white;
@@ -101,15 +102,14 @@ body {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     margin-right: 0 !important;
-    padding: 0 !important;
 }
 
 .email-input {
-    height: 30px;
     border: none;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     width: 100%;
+    font-size: 24px;
 }
 
 .email-input:focus {
@@ -117,7 +117,6 @@ body {
 }
 
 .register-form {
-    height: 32px;
     display: flex;
     justify-content: center;
 }
@@ -192,4 +191,24 @@ body {
 .mdl-card__actions,
 .mdl-card--border {
     border-top: 0 !important;
+}
+
+form p {
+    padding: 8px;
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form .button {
+    margin: 0 !important;
+}
+
+.red-link {
+    color: #e50914 !important;
 }
