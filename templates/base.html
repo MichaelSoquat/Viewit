@@ -17,35 +17,31 @@
 
 <body>
 
-    <!-- BACKGROUND -->
-    <div class="nav-container border-bottom">
-        <div class="box saturate">
-        </div>
-    </div>
-
     <!-- NAVIGATION BAR -->
     <header>
-        <nav class="nav-absolute">
-            <div>
-                <a class="watchit-logo" href='/'>
+        <div class="nav-container border-bottom">
+            <nav class="nav-absolute">
+                <div>
+                    <a class="watchit-logo" href='/'>
                 WATCHIT
             </a>
-            </div>
+                </div>
 
-            <div>
-                {%if request.user.is_authenticated%}
-                <a class="button" href="/logout/">
+                <div>
+                    {%if request.user.is_authenticated%}
+                    <a class="button" href="/logout/">
                     Logout
             </a> {%else%}
-                <a class="button" href="/login/">
+                    <a class="button" href="/login/">
                     Sign In 
             </a> {%endif%}
 
-            </div>
+                </div>
+            </nav>
+
+        </div>
 
 
-
-        </nav>
     </header>
 
     {% block content %} {% endblock content %}

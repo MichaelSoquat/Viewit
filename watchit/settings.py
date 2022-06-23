@@ -242,8 +242,8 @@ STATICFILES_DIRS = [BASE_DIR / "static",]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media/videos/')
-MEDIA_URL = 'watchit/videos/'
+MEDIA_ROOT= os.path.join(BASE_DIR, '/media/')
+MEDIA_URL = 'watchit/'
 
 INTERNAL_IPS = [
     "127.0.0.1",
