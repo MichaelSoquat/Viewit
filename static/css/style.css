@@ -22,7 +22,6 @@ body {
 .nav-container {
     background-color: black;
     height: 100vh;
-    padding: 10px;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -40,7 +39,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.box::nth-child(1n+1) {
+.box::nth-child(1n + 1) {
     border-right: none;
 }
 
@@ -192,7 +191,7 @@ body {
     justify-content: center;
 }
 
-.mdl-card {
+.absolute {
     position: absolute !important;
 }
 
@@ -259,10 +258,15 @@ form p {
 .position-videos {
     position: absolute;
     top: 100px;
-    width: 100%;
-    height: 90vh;
+    display: flex;
 }
 
 .video {
     margin: 16px;
+    width: 300px !important;
+    height: 300px !important;
+}
+
+.video img {
+    object-fit: cover;
 }

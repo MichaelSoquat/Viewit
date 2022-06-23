@@ -112,6 +112,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'crispy_forms',
+    'videos',
     
 ]
 
@@ -242,8 +243,8 @@ STATICFILES_DIRS = [BASE_DIR / "static",]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT= os.path.join(BASE_DIR, '/media/')
-MEDIA_URL = 'watchit/'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'watchit/media/'
 
 INTERNAL_IPS = [
     "127.0.0.1",

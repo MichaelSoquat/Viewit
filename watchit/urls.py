@@ -21,11 +21,13 @@ from user.views import register
 from startscreen.views import startscreen
 from django.conf.urls.static import static
 from user.views import login_view, logout_view
+from videos.views import videoDetail
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('watchit/', allVideos),
+    path('watchit', allVideos),
+    path('watchit/<str:video>', videoDetail, name="video"),
     path('django-rq/', include('django_rq.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
     path('', startscreen),

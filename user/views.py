@@ -15,7 +15,7 @@ def register(request):
             user = form.save()
             
             login(request, user)
-            return HttpResponseRedirect('/watchit/')
+            return HttpResponseRedirect('/watchit')
 
         else:
             for msg in form.error_messages:
@@ -37,7 +37,7 @@ def login_view(request):
         user = authenticate(username=request.POST.get('username'), password= request.POST.get('password'))
         if user:
             login(request, user)
-            return HttpResponseRedirect('/watchit/')
+            return HttpResponseRedirect('/watchit')
         else:
             return render(request, 'login.html', {'wrongData': True, 'redirect': redirect})
     return render(request,'login.html', {'redirect': redirect})
