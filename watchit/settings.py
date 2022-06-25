@@ -88,7 +88,11 @@ if DEBUG:
     import mimetypes
     mimetypes.add_type('application/javascript','.js', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+'127.0.0.1',
+'backend.michael-soquat.de',
+'35.246.161.131'
+]
 
 CACHE_TTL= 1
 # 60*15
@@ -150,7 +154,7 @@ RQ_QUEUES = {
         'DEFAULT_TIMEOUT': 360,
     },
 }
-
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
@@ -234,9 +238,9 @@ IMPORT_EXPORT_USE_TRANSACTIONS=True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/staticfiles')
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / "static",]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static/staticfiles",]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -244,8 +248,9 @@ STATICFILES_DIRS = [BASE_DIR / "static",]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
-MEDIA_URL = 'watchit/media/'
+MEDIA_URL = '/media/'
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+

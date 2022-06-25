@@ -22,6 +22,7 @@ from startscreen.views import startscreen
 from django.conf.urls.static import static
 from user.views import login_view, logout_view
 from videos.views import videoDetail
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -34,6 +35,6 @@ urlpatterns = [
     path('register/', register),
     path('login/', login_view),
     path('logout/', logout_view),
-    
-    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
