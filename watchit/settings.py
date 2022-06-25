@@ -82,7 +82,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x=+3p*3!4#uqc39q%vv!d*u23y-v21z7b%-@^0dmzq6hn4x1dy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     import mimetypes
